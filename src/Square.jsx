@@ -2,9 +2,8 @@ import React from "react";
 
 function Square(props) {
     return(
-        <div className="square">
-            {props.propVar}
-        </div>
+            console.log(props.squares, props.player)
+        
     );
 };
 
