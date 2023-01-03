@@ -1,21 +1,34 @@
-import {useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Square from "./Square"
+import { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Square from "./Square";
 
 function App() {
-    const [squares, setSquares] = useState(["","","","","","","","",""])
-    const [player, setPlayer] = useState(true);
-    
+  const [squares, setSquares] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [player, setPlayer] = useState(true);
+
+  const handleClick = () => {
+    setSquares(["", "", "", "", "", "", "", "", ""])
+    setPlayer(true)
+  }
+
   return (
-    
     <div className="App">
-      <Square 
-      squares = {squares}
-      setSquares = {setSquares}
-      player = {player}
-      setPlayer = {setPlayer}
-       />
+      <div className="container">
+        {squares.map((value, index) => {
+          return (
+            <Square
+              setSquares={setSquares}
+              index={index}
+              squareValue={value}
+              squares={squares}
+              player={player}
+              setPlayer={setPlayer}
+            />
+          );
+        })}
+      </div>
+      <button onClick={handleClick}>Reset</button>
     </div>
   );
 }
